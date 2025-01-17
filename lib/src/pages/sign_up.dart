@@ -1,23 +1,29 @@
+import 'package:calistenics_app/src/auth/service.dart';
 import 'package:flutter/material.dart';
 
 class SignUpFormPage extends StatefulWidget {
   const SignUpFormPage({super.key});
 
   @override
-  SignUpFormPageState createState() {
-    return SignUpFormPageState();
-  }
+  SignUpFormPageState createState() => SignUpFormPageState();
 }
 
 class SignUpFormPageState extends State<SignUpFormPage> {
   final _formKey = GlobalKey<FormState>();
 
+  final name = TextEditingController();
+  final surname = TextEditingController();
+  final username = TextEditingController();
   final email = TextEditingController();
   final password = TextEditingController();
+
+  final authService = AuthService();
 
   void handleSingUp(String email, String password) {
     if (_formKey.currentState!.validate()) {
       print('Correct validaton. Email: $email. Password: $password');
+      // authService.signUp(
+      //     name.text, surname.text, username.text, email.text, password.text);
     } else {
       print('Something went wrong');
     }
@@ -41,6 +47,36 @@ class SignUpFormPageState extends State<SignUpFormPage> {
                     child: Column(
                       spacing: 30,
                       children: [
+                        TextFormField(
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your name';
+                            }
+                            return null;
+                          },
+                          decoration: InputDecoration(hintText: 'John'),
+                          controller: name,
+                        ),
+                        TextFormField(
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your surname';
+                            }
+                            return null;
+                          },
+                          decoration: InputDecoration(hintText: 'Doe'),
+                          controller: surname,
+                        ),
+                        TextFormField(
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your username';
+                            }
+                            return null;
+                          },
+                          decoration: InputDecoration(hintText: 'johnDoe10'),
+                          controller: username,
+                        ),
                         TextFormField(
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -76,4 +112,8 @@ class SignUpFormPageState extends State<SignUpFormPage> {
           )),
     );
   }
+}
+
+extension on String {
+  get text => null;
 }
