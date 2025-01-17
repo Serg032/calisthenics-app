@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 class SignUpFormPage extends StatefulWidget {
   const SignUpFormPage({super.key});
@@ -16,6 +14,14 @@ class SignUpFormPageState extends State<SignUpFormPage> {
 
   final email = TextEditingController();
   final password = TextEditingController();
+
+  void handleSingUp(String email, String password) {
+    if (_formKey.currentState!.validate()) {
+      print('Correct validaton. Email: $email. Password: $password');
+    } else {
+      print('Something went wrong');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,12 +64,8 @@ class SignUpFormPageState extends State<SignUpFormPage> {
                           obscureText: true,
                         ),
                         ElevatedButton(
-                            onPressed: () {
-                              if (_formKey.currentState!.validate()) {
-                                print(
-                                    'Correct validaton. Email: ${email.text}. Password: ${password.text}');
-                              }
-                            },
+                            onPressed: () =>
+                                handleSingUp(email.text, password.text),
                             child: Text('Send'))
                       ],
                     ),
