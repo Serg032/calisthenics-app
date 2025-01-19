@@ -1,8 +1,8 @@
-import 'package:calistenics_app/src/pages/landing.dart';
+import 'package:calisthenics_app/src/pages/landing.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(MainApp());
 }
 
 class MainApp extends StatelessWidget {

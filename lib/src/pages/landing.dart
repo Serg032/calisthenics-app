@@ -1,4 +1,4 @@
-import 'package:calistenics_app/src/pages/sign_up.dart';
+import 'package:calisthenics_app/src/pages/sign_up.dart';
 import 'package:flutter/material.dart';
 
 class LandingPage extends StatelessWidget {

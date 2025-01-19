@@ -1,4 +1,4 @@
-import 'package:calistenics_app/src/auth/service.dart';
+import 'package:calisthenics_app/src/auth/service.dart';
 import 'package:flutter/material.dart';
 
 class SignUpFormPage extends StatefulWidget {
@@ -19,11 +19,11 @@ class SignUpFormPageState extends State<SignUpFormPage> {
 
   final authService = AuthService();
 
-  void handleSingUp(String email, String password) {
+  Future<void> handleSingUp(String email, String password) async {
     if (_formKey.currentState!.validate()) {
       print('Correct validaton. Email: $email. Password: $password');
-      // authService.signUp(
-      //     name.text, surname.text, username.text, email.text, password.text);
+      authService.signUp(
+          name.text, surname.text, username.text, email, password);
     } else {
       print('Something went wrong');
     }
@@ -112,8 +112,4 @@ class SignUpFormPageState extends State<SignUpFormPage> {
           )),
     );
   }
-}
-
-extension on String {
-  get text => null;
 }
