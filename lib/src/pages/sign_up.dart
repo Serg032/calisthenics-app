@@ -78,7 +78,7 @@ class SignUpFormPageState extends State<SignUpFormPage> {
                             }
                             return null;
                           },
-                          decoration: InputDecoration(hintText: 'johnDoe10'),
+                          decoration: InputDecoration(hintText: 'johnDoe'),
                           controller: username,
                         ),
                         TextFormField(
@@ -92,8 +92,8 @@ class SignUpFormPageState extends State<SignUpFormPage> {
                             }
                             return null;
                           },
-                          decoration:
-                              InputDecoration(hintText: 'calistenic@gmail.com'),
+                          decoration: InputDecoration(
+                              hintText: 'athlete@calisthenics.com'),
                           controller: email,
                         ),
                         TextFormField(
