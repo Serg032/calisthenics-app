@@ -4,11 +4,9 @@ import 'package:calisthenics_app/config.dart';
 
 class AuthService {
   // Future<http.Response>
-  Future signUp(String name, String surname, String username, email,
-      String password) async {
+  Future<bool> signUp(String name, String surname, String username,
+      String email, String password) async {
     String url = AppConfig.apiBaseUrl;
-    print('URL: $url');
-    print('Payload: $name. $surname. $username. $email, $password');
     dynamic response = await http.post(Uri.parse('$url/user'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
@@ -22,6 +20,10 @@ class AuthService {
         }));
     print('Response: ${response.body}');
 
-    return response;
+    if (response.statusCode == 201) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
